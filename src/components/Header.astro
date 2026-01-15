@@ -1,0 +1,64 @@
+---
+
+---
+
+<header class="fixed top-6 left-6 right-6 z-50">
+    <nav class="max-w-6xl mx-auto bg-white/90 backdrop-blur-md shadow-sm border border-gray-100 rounded-full px-6 py-2 flex items-center justify-between">
+      
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-3">
+        <img src="/logo.png" alt="مشهد" class="h-16 w-auto" />
+      </a>
+      
+      <!-- Desktop nav -->
+      <ul class="hidden md:flex items-center gap-8">
+        <li><a href="#services" class="text-gray-600 hover:text-[#6B5B95] transition-colors font-medium">خدماتنا</a></li>
+        <li><a href="#how" class="text-gray-600 hover:text-[#6B5B95] transition-colors font-medium">كيف نعمل</a></li>
+        <li><a href="#pricing" class="text-gray-600 hover:text-[#6B5B95] transition-colors font-medium">باقاتنا</a></li>
+        <li><a href="#portfolio" class="text-gray-600 hover:text-[#6B5B95] transition-colors font-medium">أعمالنا</a></li>
+      </ul>
+      
+      <!-- CTA -->
+      <a
+        href="#contact"
+        class="hidden md:inline-flex bg-[#6B5B95] text-white font-medium px-6 py-2.5 rounded-full hover:bg-[#4c3f6a] transition-colors text-sm"
+      >
+        تواصل معنا
+      </a>
+      
+      <!-- Mobile menu button -->
+      <button id="menu-toggle" class="md:hidden text-gray-700 p-2" aria-label="فتح القائمة">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+      
+    </nav>
+    
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden mt-4 bg-white/95 backdrop-blur-md shadow-lg border border-gray-100 rounded-3xl px-6 py-6">
+      <ul class="flex flex-col gap-4">
+        <li><a href="#services" class="block text-gray-600 hover:text-[#6B5B95] transition-colors py-2 font-medium">خدماتنا</a></li>
+        <li><a href="#how" class="block text-gray-600 hover:text-[#6B5B95] transition-colors py-2 font-medium">كيف نعمل</a></li>
+        <li><a href="#pricing" class="block text-gray-600 hover:text-[#6B5B95] transition-colors py-2 font-medium">باقاتنا</a></li>
+        <li><a href="#portfolio" class="block text-gray-600 hover:text-[#6B5B95] transition-colors py-2 font-medium">أعمالنا</a></li>
+        <li>
+          <a
+            href="#contact"
+            class="inline-flex bg-[#F5A524] text-white font-medium px-6 py-3 rounded-full hover:bg-[#E09000] transition-colors text-sm mt-2"
+          >
+            تواصل معنا
+          </a>
+        </li>
+      </ul>
+    </div>
+  </header>
+  
+  <script>
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+    
+    toggle?.addEventListener('click', () => {
+      menu?.classList.toggle('hidden');
+    });
+  </script>
