@@ -1,64 +1,96 @@
 ---
+// src/components/Portfolio.astro
 
+const categories = [
+  {
+    id: 'homes',
+    title: 'شقق ومنازل',
+    folder: 'homes'
+  },
+  {
+    id: 'airbnb',
+    title: 'إير بي إن بي (Airbnb)',
+    folder: 'airbnb'
+  },
+  {
+    id: 'hotels',
+    title: 'فنادق',
+    folder: 'hotels'
+  },
+  {
+    id: 'food',
+    title: 'مطاعم ومأكولات',
+    folder: 'food'
+  },
+  {
+    id: 'boutique',
+    title: 'محلات وبوتيكات',
+    folder: 'boutique'
+  },
+  {
+    id: 'offices',
+    title: 'مكاتب ومساحات عمل',
+    folder: 'offices'
+  }
+];
 ---
 
 <section id="portfolio" class="bg-[#FAF9F6] px-6 py-24">
-    <div class="max-w-7xl mx-auto">
-      
-      <!-- Section header -->
-      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
-        <div>
-          <p class="text-[#F5A524] font-medium mb-3">أعمالنا السابقة</p>
-          <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900">
-            أعمالنا السابقة
-          </h2>
-        </div>
-        <p class=" text-black px-6 py-4 rounded-2xl max-w-lg leading-relaxed">
-          نفخر بالأعمال التي قمنا بتنفيذها داخل الدار البيضاء لمختلف المشاريع والمحلات. نحرص في كل تصوير على إبراز المكان بأفضل زاوية وبصورة واضحة واحترافية.
-        </p>
+  <div class="max-w-7xl mx-auto">
+    
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
+      <div>
+        <p class="text-[#F5A524] font-medium mb-3">أعمالنا السابقة</p>
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900">
+          أعمالنا السابقة
+        </h2>
       </div>
-      
-      <!-- Photos grid -->
-      <div class="mb-12">
-        <h3 class="text-2xl font-bold text-gray-900 mb-6">صور من أعمالنا</h3>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div class="aspect-square rounded-2xl overflow-hidden">
-            <img src="/portfolio-1.jpg" alt="عمل سابق" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
-          </div>
-          <div class="aspect-square rounded-2xl overflow-hidden">
-            <img src="/portfolio-2.jpg" alt="عمل سابق" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
-          </div>
-          <div class="aspect-square rounded-2xl overflow-hidden">
-            <img src="/portfolio-3.jpg" alt="عمل سابق" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
-          </div>
-          <div class="aspect-square rounded-2xl overflow-hidden">
-            <img src="/portfolio-4.jpg" alt="عمل سابق" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
-          </div>
-        </div>
-      </div>
-      
-      <!-- Videos grid -->
-      <div class="mb-12">
-        <h3 class="text-2xl font-bold text-gray-900 mb-6">فيديوهات من مشاريع تم تصويرها في الدار البيضاء</h3>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div class="aspect-video rounded-2xl overflow-hidden bg-gray-200">
-            <video src="/video-1.mp4" class="w-full h-full object-cover" controls></video>
-          </div>
-          <div class="aspect-video rounded-2xl overflow-hidden bg-gray-200">
-            <video src="/video-2.mp4" class="w-full h-full object-cover" controls></video>
-          </div>
-          <div class="aspect-video rounded-2xl overflow-hidden bg-gray-200">
-            <video src="/video-3.mp4" class="w-full h-full object-cover" controls></video>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Bottom note -->
-      <div class="flex justify-center">
-        <p class=" text-black px-8 py-4 rounded-full text-center">
-          جودة الصورة والفيديو هي أفضل دليل على عملنا.
-        </p>
-      </div>
-      
+      <p class="text-black px-6 py-4 rounded-2xl max-w-lg leading-relaxed">
+        نفخر بالأعمال التي قمنا بتنفيذها داخل الدار البيضاء لمختلف المشاريع والمحلات. نحرص في كل تصوير على إبراز المكان بأفضل زاوية وبصورة واضحة واحترافية.
+      </p>
     </div>
-  </section>
+    
+    <div class="flex flex-col gap-16 mb-12">
+      {categories.map((cat) => (
+        <div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-6">{cat.title}</h3>
+          
+          {/* Mobile: Horizontal Scroll (Snap) 
+            Desktop: Grid 4 columns
+          */}
+          <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-6 px-6 md:grid md:grid-cols-4 md:gap-4 md:overflow-visible md:p-0 md:mx-0 no-scrollbar">
+            {[1, 2, 3, 4].map((num) => (
+              <div class="flex-none w-[85%] md:w-auto snap-center aspect-square rounded-2xl overflow-hidden bg-gray-100">
+                <img 
+                  src={`/${cat.folder}/${num}.png`} 
+                  alt={`${cat.title} - ${num}`} 
+                  class="w-full h-full object-cover" 
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <div class="flex justify-center mt-12">
+      <p class="text-black px-8 py-4 rounded-full text-center">
+        جودة الصورة والفيديو هي أفضل دليل على عملنا.
+      </p>
+    </div>
+    
+  </div>
+</section>
+
+<style>
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+      display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+  }
+</style>
